@@ -1,6 +1,37 @@
 package MunroFinderLibrary
 
-data class Munro(val category: String, val height: Int, val name: String)
+data class Munro(
+    val runningNumber: Int,
+    val doBIHNumber: Int,
+    val streetmap: String,
+    val geograph: String,
+    val hillBagging: String,
+    val name: String,
+    val smcSection: String,
+    val rhbSection:String,
+    val section: String,
+    val heightMeter: Int,
+    val heightFeet:Int,
+    val map_150: String,
+    val map_125:String,
+    val gridRef: String,
+    val gridRefXY:String,
+    val xCoord: Int,
+    val yCoord: Int,
+    val year1891: String,
+    val year1921: String,
+    val year1933: String,
+    val year1953: String,
+    val year1969: String,
+    val year1974: String,
+    val year1981: String,
+    val year1984: String,
+    val year1990: String,
+    val year1997: String,
+    val yearPost1997: String,
+    val comments: String
+
+)
 
 sealed class Result {
     data class Success(val munros: List<Munro>) : Result()
