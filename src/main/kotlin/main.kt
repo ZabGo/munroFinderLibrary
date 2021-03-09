@@ -1,21 +1,17 @@
 
-import MunroFinderLibrary.MunroCategory
-import MunroFinderLibrary.Result
-import MunroFinderLibrary.filteringByCategory
-import MunroFinderLibrary.getAllLinesFromFile
-import MunroFinderLibrary.getListOfMunrosFromFile
+import MunroFinderLibrary.*
 
 //import MunroFinderLibrary.getListOfMunrosFromFile
 
 fun main() {
     val listOfMunros = getListOfMunrosFromFile("/home/xavier/projects/MunroFinderLibrary/src/main/kotlin/munrotab_v6.2.csv")
-
-    when(listOfMunros){
-        is Result.Success<*> -> println("list of munros: ${listOfMunros.munros}")
-        is Result.Error.MinimumHeightHigherThenMaximumHeight -> println(listOfMunros.message)
-        is Result.Error.MinimumHeightIsNegative -> println(listOfMunros.message)
-        is Result.Error.MaximumHeightIsNegative -> println(listOfMunros.message)
-        is Result.Error.FileReadingException -> println(listOfMunros.message)
+    val result = listOfMunros.filteringByMinimumHeight(-9087).filteringByCategory(MunroCategory.MunroTop())
+    when(result){
+        is Result.Success<*> -> println("list of munros: ${result.munros}")
+        is Result.Error.MinimumHeightHigherThenMaximumHeight -> println(result.message)
+        is Result.Error.MinimumHeightIsNegative -> println(result.message)
+        is Result.Error.MaximumHeightIsNegative -> println(result.message)
+        is Result.Error.FileReadingException -> println(result.message)
     }
 //   val filteredResult = listOfMunros.filteringByCategory(MunroCategory.Either())
 //    println(filteredResult)
