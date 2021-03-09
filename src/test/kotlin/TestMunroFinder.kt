@@ -117,7 +117,7 @@ class TestMunroFinder {
             )
             is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative(actual.message)
             is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative(actual.message)
-            is Result.Error.FileReadingException -> Result.Error.FileReadingException(actual.message)
+            is Result.Error.FileException -> Result.Error.FileException(actual.message)
         }
 
 
@@ -135,7 +135,7 @@ class TestMunroFinder {
             )
             is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative(actual.message)
             is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative(actual.message)
-            is Result.Error.FileReadingException -> Result.Error.FileReadingException(actual.message)
+            is Result.Error.FileException -> Result.Error.FileException(actual.message)
         }
     }
 
@@ -151,7 +151,7 @@ class TestMunroFinder {
             )
             is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative(actual.message)
             is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative(actual.message)
-            is Result.Error.FileReadingException -> Result.Error.FileReadingException(actual.message)
+            is Result.Error.FileException -> Result.Error.FileException(actual.message)
         }
     }
 
@@ -167,7 +167,7 @@ class TestMunroFinder {
             )
             is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative(actual.message)
             is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative(actual.message)
-            is Result.Error.FileReadingException -> Result.Error.FileReadingException(actual.message)
+            is Result.Error.FileException -> Result.Error.FileException(actual.message)
         }
     }
 

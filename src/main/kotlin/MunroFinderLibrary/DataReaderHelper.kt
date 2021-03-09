@@ -1,6 +1,8 @@
 package MunroFinderLibrary
 
 import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 import java.lang.Exception
 
 fun getAllLinesFromFile(filePath: String): Result {
@@ -8,7 +10,7 @@ fun getAllLinesFromFile(filePath: String): Result {
         Result.Success(File(filePath).readLines())
     } catch (exception: Exception) {
 
-        Result.Error.FileReadingException(message = exception.localizedMessage)
+        Result.Error.FileException(message = exception.localizedMessage)
     }
 }
 
@@ -67,7 +69,7 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
         is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
         is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
         is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-        is Result.Error.FileReadingException -> Result.Error.FileReadingException(lines.message)
+        is Result.Error.FileException -> Result.Error.FileException(lines.message)
         is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 
@@ -88,7 +90,7 @@ fun convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros: Result): Result 
         is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
         is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
         is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-        is Result.Error.FileReadingException -> Result.Error.FileReadingException(listOfMunros.message)
+        is Result.Error.FileException -> Result.Error.FileException(listOfMunros.message)
         is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
@@ -97,6 +99,45 @@ fun getListOfMunrosFromFile(filePath: String): Result {
     val lines = getAllLinesFromFile(filePath)
     val listOfMunros = convertLinesOfFileIntoListOfMunros(lines)
     return convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros)
+}
+
+fun Result.saveResultInFile(): Result {
+    val headers = "name,heightMeter,hillCategory,gridRef"
+    return when (this) {
+        is Result.Success<*> -> {
+            this.munros as List<SimplifiedMunro>
+            try {
+                val fileWriter = FileWriter("./result.csv")
+
+                fileWriter.append(headers)
+                fileWriter.append('\n')
+
+                this.munros.forEach { simplifiedMunro ->
+                    fileWriter.append(simplifiedMunro.name)
+                    fileWriter.append(',')
+                    fileWriter.append(simplifiedMunro.heightMeter.toString())
+                    fileWriter.append(',')
+                    fileWriter.append(simplifiedMunro.hillCategory)
+                    fileWriter.append(',')
+                    fileWriter.append(simplifiedMunro.gridRef)
+                    fileWriter.append('\n')
+                }
+
+                fileWriter.flush()
+                fileWriter.close()
+                Result.Success(this.munros)
+            } catch (exception: IOException) {
+                Result.Error.FileException(exception.localizedMessage)
+            }
+        }
+        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
+        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
+        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
+        is Result.Error.FileException -> Result.Error.FileException(this.message)
+        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+    }
+
+
 
 }
 
