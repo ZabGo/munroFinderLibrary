@@ -1,5 +1,7 @@
 package MunroFinderLibrary
 
+import javax.swing.SortOrder
+
 data class Munro(
     val runningNumber: Int,
     val doBIHNumber: Int,
@@ -39,6 +41,11 @@ data class SimplifiedMunro(
     val hillCategory: String,
     val gridRef: String,
 )
+
+sealed class SortResult{
+    object Ascending: SortResult()
+    object Desending: SortResult()
+}
 
 sealed class Result {
     data class Success<T>(val munros: List<T>) : Result()
