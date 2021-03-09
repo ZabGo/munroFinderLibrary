@@ -7,6 +7,3 @@ fun List<SimplifiedMunro>.filteringByCategory(category: MunroCategory): List<Sim
         is MunroCategory.Either -> this
     }
 }
-
-//MunroCategory.EITHER.type -> this
-//else -> this.filter { it.hillCategory == categoryType }

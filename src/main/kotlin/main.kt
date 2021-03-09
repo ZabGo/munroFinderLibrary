@@ -6,7 +6,7 @@ import MunroFinderLibrary.getListOfMunrosFromFile
 fun main() {
     val listOfMunros = getListOfMunrosFromFile("/home/xavier/projects/MunroFinderLibrary/src/main/kotlin/munrotab_v6.2.csv")
 
-   val filteredResult = listOfMunros.filteringByCategory(MunroCategory.MunroTop())
+   val filteredResult = listOfMunros.filteringByCategory(MunroCategory.Either())
     println(filteredResult)
 
 

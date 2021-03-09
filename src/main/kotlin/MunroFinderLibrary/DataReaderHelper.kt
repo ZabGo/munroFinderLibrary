@@ -31,8 +31,8 @@ fun convertLinesOfFileIntoListOfMunros(lines: List<String>?): MutableList<Munro>
                             lineIntoList[6],
                             lineIntoList[7],
                             lineIntoList[8],
-                            lineIntoList[9].toFloat(),
-                            lineIntoList[10].toFloat(),
+                            lineIntoList[9].toDouble(),
+                            lineIntoList[10].toDouble(),
                             lineIntoList[11],
                             lineIntoList[12],
                             lineIntoList[13],
@@ -64,15 +64,14 @@ fun convertLinesOfFileIntoListOfMunros(lines: List<String>?): MutableList<Munro>
 }
 
 fun convertListOfMunrosIntoSimplifiedListOfMunros(munros: MutableList<Munro>): List<SimplifiedMunro> {
-    return munros.map {
-        SimplifiedMunro(it.name, it.heightMeter, it.yearPost1997, it.gridRef)
-    }
+    return munros.map { SimplifiedMunro(it.name, it.heightMeter, it.yearPost1997, it.gridRef) }
+        .filter { it.hillCategory.isNotBlank() || it.hillCategory.isNotEmpty() }
 }
 
 fun getListOfMunrosFromFile(filePath: String): List<SimplifiedMunro> {
     val lines = getAllLinesFromFile(filePath)
     val listOfMunros = convertLinesOfFileIntoListOfMunros(lines)
-    println("Munros: $listOfMunros")
+
     return convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros)
 
 }

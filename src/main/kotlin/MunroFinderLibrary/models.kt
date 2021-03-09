@@ -10,8 +10,8 @@ data class Munro(
     val smcSection: String,
     val rhbSection: String,
     val section: String,
-    val heightMeter: Float,
-    val heightFeet: Float,
+    val heightMeter: Double,
+    val heightFeet: Double,
     val map_150: String,
     val map_125: String,
     val gridRef: String,
@@ -35,7 +35,7 @@ data class Munro(
 
 data class SimplifiedMunro(
     val name:String,
-    val heightMeter: Float,
+    val heightMeter: Double,
     val hillCategory: String,
     val gridRef: String,
 )
