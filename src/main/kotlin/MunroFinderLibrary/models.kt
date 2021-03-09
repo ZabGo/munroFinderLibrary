@@ -8,14 +8,14 @@ data class Munro(
     val hillBagging: String,
     val name: String,
     val smcSection: String,
-    val rhbSection:String,
+    val rhbSection: String,
     val section: String,
-    val heightMeter: Int,
-    val heightFeet:Int,
+    val heightMeter: Float,
+    val heightFeet: Float,
     val map_150: String,
-    val map_125:String,
+    val map_125: String,
     val gridRef: String,
-    val gridRefXY:String,
+    val gridRefXY: String,
     val xCoord: Int,
     val yCoord: Int,
     val year1891: String,
@@ -29,7 +29,7 @@ data class Munro(
     val year1990: String,
     val year1997: String,
     val yearPost1997: String,
-    val comments: String
+    val comments: String = ""
 
 )
 
@@ -45,7 +45,7 @@ sealed class Result {
 }
 
 enum class MunroCategory(val type: String) {
-    MUNRO("MUNRO"),
-    MUNRO_TOP("MUNRO_TOP"),
+    MUNRO("MUN"),
+    MUNRO_TOP("TOP"),
     EITHER("EITHER"),
 }
