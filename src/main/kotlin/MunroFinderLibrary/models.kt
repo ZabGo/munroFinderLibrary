@@ -51,8 +51,8 @@ sealed class Result {
     }
 }
 
-enum class MunroCategory(val type: String) {
-    MUNRO("MUN"),
-    MUNRO_TOP("TOP"),
-    EITHER("EITHER"),
+sealed class MunroCategory() {
+    data class Munro(val name: String = "MUN"): MunroCategory()
+    data class MunroTop(val name: String = "TOP"): MunroCategory()
+    data class Either(val name: String = "EITHER"): MunroCategory()
 }

@@ -72,6 +72,7 @@ fun convertListOfMunrosIntoSimplifiedListOfMunros(munros: MutableList<Munro>): L
 fun getListOfMunrosFromFile(filePath: String): List<SimplifiedMunro> {
     val lines = getAllLinesFromFile(filePath)
     val listOfMunros = convertLinesOfFileIntoListOfMunros(lines)
+    println("Munros: $listOfMunros")
     return convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros)
 
 }

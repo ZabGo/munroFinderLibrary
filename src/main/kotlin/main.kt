@@ -1,9 +1,15 @@
 
+import MunroFinderLibrary.MunroCategory
+import MunroFinderLibrary.filteringByCategory
 import MunroFinderLibrary.getListOfMunrosFromFile
 
 fun main() {
     val listOfMunros = getListOfMunrosFromFile("/home/xavier/projects/MunroFinderLibrary/src/main/kotlin/munrotab_v6.2.csv")
-    println(listOfMunros)
+
+   val filteredResult = listOfMunros.filteringByCategory(MunroCategory.MunroTop())
+    println(filteredResult)
+
+
 }
 
 //val listOfMunros = mutableListOf<Munro>()
