@@ -41,13 +41,14 @@ data class SimplifiedMunro(
 )
 
 sealed class Result {
-    data class Success(val munros: List<Munro>) : Result()
+    data class Success<T>(val munros: List<T>) : Result()
     sealed class Error : Result() {
         data class MinimumHeightHigherThenMaximumHeight(val message: String = "The minimum height cannot be higher than the maximum height.") :
             Error()
 
         data class MinimumHeightIsNegative(val message: String = "The minimum height cannot be negative.") : Error()
         data class MaximumHeightIsNegative(val message: String = "The maximum height cannot be negative.") : Error()
+        data class FileReadingException(val message: String) : Error()
     }
 }
 

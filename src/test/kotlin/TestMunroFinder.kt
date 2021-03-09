@@ -88,4 +88,12 @@ class TestMunroFinder {
 
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun shouldDisplayAllMunrosAboveACertainHeight(){
+        val expected = testListOfAllMunrosCategory
+        val actual = testListOfAllMunrosCategory.filteringByCategory(MunroCategory.Either())
+
+        assertEquals(expected, actual)
+    }
 }

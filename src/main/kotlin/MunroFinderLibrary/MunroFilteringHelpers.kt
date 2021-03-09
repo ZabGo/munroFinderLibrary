@@ -7,3 +7,6 @@ fun List<SimplifiedMunro>.filteringByCategory(category: MunroCategory): List<Sim
         is MunroCategory.Either -> this
     }
 }
+
+fun List<SimplifiedMunro>.filteringByMinimumHeight(minimumHeight: Int?): List<SimplifiedMunro> =
+    minimumHeight?.let { height -> this.filter { it.heightMeter >= height } } ?: this
