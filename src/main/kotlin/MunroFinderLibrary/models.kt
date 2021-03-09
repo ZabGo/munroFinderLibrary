@@ -33,6 +33,13 @@ data class Munro(
 
 )
 
+data class SimplifiedMunro(
+    val name:String,
+    val heightMeter: Float,
+    val hillCategory: String,
+    val gridRef: String,
+)
+
 sealed class Result {
     data class Success(val munros: List<Munro>) : Result()
     sealed class Error : Result() {
