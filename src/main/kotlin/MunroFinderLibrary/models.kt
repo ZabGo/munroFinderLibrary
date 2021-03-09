@@ -55,6 +55,7 @@ sealed class Result {
         data class MinimumHeightIsNegative(val message: String = "The minimum height cannot be negative.") : Error()
         data class MaximumHeightIsNegative(val message: String = "The maximum height cannot be negative.") : Error()
         data class FileReadingException(val message: String) : Error()
+        data class NumberOfItemToDisplayCannotBeNegative(val message: String = "The number of item to display cannot be negative.") : Error()
     }
 }
 

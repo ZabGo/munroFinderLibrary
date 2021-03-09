@@ -68,6 +68,7 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
         is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
         is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
         is Result.Error.FileReadingException -> Result.Error.FileReadingException(lines.message)
+        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 
 
@@ -88,6 +89,7 @@ fun convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros: Result): Result 
         is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
         is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
         is Result.Error.FileReadingException -> Result.Error.FileReadingException(listOfMunros.message)
+        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
