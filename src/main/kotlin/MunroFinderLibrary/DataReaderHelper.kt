@@ -4,6 +4,7 @@ import java.io.File
 import java.io.FileWriter
 import java.io.IOException
 import java.lang.Exception
+import java.nio.file.Paths
 
 fun getAllLinesFromFile(filePath: String): Result {
     return try {
@@ -17,8 +18,9 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
     val listOfMunros = mutableListOf<Munro>()
     return when (lines) {
         is Result.Success<*> -> {
-            val munros: List<String> = lines.munros as List<String>
-            munros.forEach { line ->
+            lines.munros as List<String>
+
+            lines.munros.forEach { line ->
                 if (line.isNotEmpty() || line.isNotEmpty()) {
                     val lineIntoList = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*\$)".toRegex())
                     if (lineIntoList[0].isNotBlank() || lineIntoList[0].isNotEmpty()) {
@@ -78,8 +80,8 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
 fun convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros: Result): Result {
     return when (listOfMunros) {
         is Result.Success<*> -> {
-            val list = listOfMunros.munros as List<Munro>
-            val simplifiedMunros = list.map {
+            listOfMunros.munros as List<Munro>
+            val simplifiedMunros = listOfMunros.munros.map {
                 SimplifiedMunro(it.name, it.heightMeter, it.yearPost1997, it.gridRef)
             }.filter { it.hillCategory.isNotBlank() || it.hillCategory.isNotEmpty() }
             Result.Success(simplifiedMunros)
@@ -104,7 +106,7 @@ fun Result.saveResultInFile(): Result {
         is Result.Success<*> -> {
             this.munros as List<SimplifiedMunro>
             try {
-                val fileWriter = FileWriter("./result.csv")
+                val fileWriter = FileWriter("${Paths.get("").toAbsolutePath()}/dataFolder/result.csv")
 
                 fileWriter.append(headers)
                 fileWriter.append('\n')

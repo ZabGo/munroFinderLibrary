@@ -1,6 +1,6 @@
 package MunroFinderLibrary
 
-fun Result.filteringByCategory(category: MunroCategory): Result {
+fun Result.filteringByCategory(category: MunroCategory = MunroCategory.Either()): Result {
 
     return when (this) {
         is Result.Success<*> -> {
@@ -22,11 +22,11 @@ fun Result.filteringByCategory(category: MunroCategory): Result {
 fun Result.filteringByMinimumHeight(minimumHeight: Int? = null): Result {
     return when (this) {
         is Result.Success<*> -> {
-            val munros = this.munros as List<SimplifiedMunro>
+            this.munros as List<SimplifiedMunro>
             when {
-                minimumHeight == null -> Result.Success(munros)
+                minimumHeight == null -> Result.Success(this.munros)
                 minimumHeight < 0 -> Result.Error.MinimumHeightIsNegative()
-                else -> Result.Success(munros.filter { it.heightMeter >= minimumHeight })
+                else -> Result.Success(this.munros.filter { it.heightMeter >= minimumHeight })
             }
         }
         is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
@@ -40,11 +40,11 @@ fun Result.filteringByMinimumHeight(minimumHeight: Int? = null): Result {
 fun Result.filteringByMaximumHeight(maximumHeight: Int? = null): Result {
     return when (this) {
         is Result.Success<*> -> {
-            val munros = this.munros as List<SimplifiedMunro>
+            this.munros as List<SimplifiedMunro>
             when {
-                maximumHeight == null -> Result.Success(munros)
+                maximumHeight == null -> Result.Success(this.munros)
                 maximumHeight < 0 -> Result.Error.MaximumHeightIsNegative()
-                else -> Result.Success(munros.filter { it.heightMeter <= maximumHeight })
+                else -> Result.Success(this.munros.filter { it.heightMeter <= maximumHeight })
             }
         }
         is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()

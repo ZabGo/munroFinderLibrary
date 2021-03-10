@@ -1,7 +1,5 @@
 package MunroFinderLibrary
 
-import javax.swing.SortOrder
-
 data class Munro(
     val runningNumber: Int,
     val doBIHNumber: Int,
