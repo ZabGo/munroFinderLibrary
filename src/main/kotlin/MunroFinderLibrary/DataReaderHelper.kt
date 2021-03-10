@@ -9,7 +9,6 @@ fun getAllLinesFromFile(filePath: String): Result {
     return try {
         Result.Success(File(filePath).readLines())
     } catch (exception: Exception) {
-
         Result.Error.FileException(message = exception.localizedMessage)
     }
 }
@@ -82,9 +81,7 @@ fun convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros: Result): Result 
             val list = listOfMunros.munros as List<Munro>
             val simplifiedMunros = list.map {
                 SimplifiedMunro(it.name, it.heightMeter, it.yearPost1997, it.gridRef)
-            }
-                .filter { it.hillCategory.isNotBlank() || it.hillCategory.isNotEmpty() }
-
+            }.filter { it.hillCategory.isNotBlank() || it.hillCategory.isNotEmpty() }
             Result.Success(simplifiedMunros)
         }
         is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
@@ -136,9 +133,6 @@ fun Result.saveResultInFile(): Result {
         is Result.Error.FileException -> Result.Error.FileException(this.message)
         is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
-
-
-
 }
 
 
