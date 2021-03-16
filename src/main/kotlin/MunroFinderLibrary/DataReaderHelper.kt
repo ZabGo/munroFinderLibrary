@@ -21,7 +21,7 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
             lines.munros as List<String>
 
             lines.munros.forEach { line ->
-                if (line.isNotEmpty() || line.isNotEmpty()) {
+                if (line.isNotEmpty() || line.isNotBlank()) {
                     val lineIntoList = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*\$)".toRegex())
                     if (lineIntoList[0].isNotBlank() || lineIntoList[0].isNotEmpty()) {
                         lineIntoList[0].toIntOrNull()?.let {
