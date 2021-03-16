@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestMunroFinder" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-03-16T10:43:55" hostname="xavier-VivoBook-ASUSLaptop-X580GD-N580GD" time="0.039">
+  <properties/>
+  <testcase name="shouldDisplayErrorIfMinimumHeightIsHigherThanMaximumHeight()" classname="TestMunroFinder" time="0.008"/>
+  <testcase name="shoulddisplayALimitedNumberOfItems()" classname="TestMunroFinder" time="0.002"/>
+  <testcase name="shouldDisplayErrorIfNumberIsNegative()" classname="TestMunroFinder" time="0.002"/>
+  <testcase name="shouldDisplayErrorIfMinimumHeightIsNegative()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldDisplayAllMunrosAboveACertainHeight()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldSortResultbyAscendingHeight()" classname="TestMunroFinder" time="0.002"/>
+  <testcase name="shouldDisplayErrorIfminimumHeightIsNegativeAndHigherThanMaximumHeight()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldDisplayErrorIfMaximumHeightIsNegative()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldSortResultbyDescendingName()" classname="TestMunroFinder" time="0.002"/>
+  <testcase name="shouldDisplayAllMunrosBelowACertainHeight()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldDisplayOnlyMunros()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldDisplayOnlyTopMunros()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldSortResultbyAscendingName()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldDisplayAllMunros()" classname="TestMunroFinder" time="0.001"/>
+  <testcase name="shouldSortResultbyDescendingHeight()" classname="TestMunroFinder" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
