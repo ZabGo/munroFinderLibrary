@@ -7,7 +7,7 @@ fun main() {
     val listOfMunros = getListOfMunrosFromFile(fileAbsolutePath)
 
     val sortedResult = listOfMunros
-        .filteringByHeights(900, -1000)
+        .filteringByHeights(900, 1000)
         .filteringByCategory(MunroCategory.Munro())
         .sortedByName(SortResult.Ascending)
         .sortedByHeight(SortResult.Ascending)

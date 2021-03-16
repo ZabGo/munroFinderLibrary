@@ -14,13 +14,13 @@ fun getAllLinesFromFile(filePath: String): Result {
     }
 }
 
-fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
+fun Result.convertLinesOfFileIntoListOfMunros(): Result {
     val listOfMunros = mutableListOf<Munro>()
-    return when (lines) {
+    return when (this) {
         is Result.Success<*> -> {
-            lines.munros as List<String>
+            this.munros as List<String>
 
-            lines.munros.forEach { line ->
+            this.munros.forEach { line ->
                 if (line.isNotEmpty() || line.isNotBlank()) {
                     val lineIntoList = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*\$)".toRegex())
                     if (lineIntoList[0].isNotBlank() || lineIntoList[0].isNotEmpty()) {
@@ -67,38 +67,27 @@ fun convertLinesOfFileIntoListOfMunros(lines: Result): Result {
             }
             Result.Success(listOfMunros)
         }
-        is Result.Error -> handleError(lines)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(lines.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+        is Result.Error -> handleError(this)
     }
-
-
 }
 
-fun convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros: Result): Result {
-    return when (listOfMunros) {
+fun Result.convertListOfMunrosIntoSimplifiedListOfMunros(): Result  {
+    return when (this) {
         is Result.Success<*> -> {
-            listOfMunros.munros as List<Munro>
-            val simplifiedMunros = listOfMunros.munros.map {
+            this.munros as List<Munro>
+            val simplifiedMunros = this.munros.map {
                 SimplifiedMunro(it.name, it.heightMeter, it.yearPost1997, it.gridRef)
             }.filter { it.hillCategory.isNotBlank() || it.hillCategory.isNotEmpty() }
             Result.Success(simplifiedMunros)
         }
-        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-        is Result.Error.FileException -> Result.Error.FileException(listOfMunros.message)
-        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+        is Result.Error -> handleError(this)
     }
 }
 
 fun getListOfMunrosFromFile(filePath: String): Result {
-    val lines = getAllLinesFromFile(filePath)
-    val listOfMunros = convertLinesOfFileIntoListOfMunros(lines)
-    return convertListOfMunrosIntoSimplifiedListOfMunros(listOfMunros)
+    return getAllLinesFromFile(filePath)
+        .convertLinesOfFileIntoListOfMunros()
+        .convertListOfMunrosIntoSimplifiedListOfMunros()
 }
 
 fun Result.saveResultInFile(): Result {
@@ -131,11 +120,6 @@ fun Result.saveResultInFile(): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 

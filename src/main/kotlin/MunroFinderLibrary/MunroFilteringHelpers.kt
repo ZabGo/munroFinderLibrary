@@ -12,11 +12,6 @@ fun Result.filteringByCategory(category: MunroCategory = MunroCategory.Either())
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -31,11 +26,6 @@ fun Result.filteringByMinimumHeight(minimumHeight: Int? = null): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -50,11 +40,6 @@ fun Result.filteringByMaximumHeight(maximumHeight: Int? = null): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -67,11 +52,6 @@ fun Result.filteringByHeights(minimumHeight: Int? = null, maximumHeight: Int? = 
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -84,11 +64,6 @@ fun Result.limitNumberOfItemDisplayed(numberOfItems: Int): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 
 }

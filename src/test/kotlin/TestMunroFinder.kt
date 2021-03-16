@@ -461,4 +461,20 @@ class TestMunroFinder {
         }
     }
 
+    @Test
+    fun shouldDisplayErrorIfminimumHeightIsNegativeAndHigherThanMaximumHeight() {
+        val expected = "The minimum height cannot be negative."
+
+        val actual = testListOfAllMunrosCategoryFromResult.filteringByHeights(-1200, 800)
+
+        when (actual) {
+            is Result.Success<*> -> assertEquals(expected, actual.munros)
+            is Result.Error.MinimumHeightHigherThenMaximumHeight -> assertEquals(expected, actual.message)
+            is Result.Error.MinimumHeightIsNegative -> assertEquals(expected, actual.message)
+            is Result.Error.MaximumHeightIsNegative -> assertEquals(expected, actual.message)
+            is Result.Error.FileException -> assertEquals(expected, actual.message)
+            is Result.Error.NumberOfItemToDisplayCannotBeNegative -> assertEquals(expected, actual.message)
+        }
+    }
+
 }

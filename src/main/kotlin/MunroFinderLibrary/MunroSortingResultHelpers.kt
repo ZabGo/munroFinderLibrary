@@ -10,11 +10,6 @@ fun Result.sortedByHeight(sortOrder: SortResult): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -28,10 +23,5 @@ fun Result.sortedByName(sortOrder: SortResult): Result {
             }
         }
         is Result.Error -> handleError(this)
-//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-//        is Result.Error.FileException -> Result.Error.FileException(this.message)
-//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
