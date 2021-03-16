@@ -58,6 +58,16 @@ sealed class Result {
     }
 }
 
+fun handleError(error: Result.Error): Result {
+    return when(error){
+        is Result.Error.MinimumHeightHigherThenMaximumHeight ->  Result.Error.MinimumHeightHigherThenMaximumHeight()
+        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
+        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
+        is Result.Error.FileException -> Result.Error.FileException(error.message)
+        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+    }
+}
+
 sealed class MunroCategory() {
     data class Munro(val name: String = "MUN"): MunroCategory()
     data class MunroTop(val name: String = "TOP"): MunroCategory()

@@ -9,11 +9,12 @@ fun Result.sortedByHeight(sortOrder: SortResult): Result {
                 SortResult.Desending -> Result.Success(this.munros.sortedByDescending { it.heightMeter })
             }
         }
-        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-        is Result.Error.FileException -> Result.Error.FileException(this.message)
-        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+        is Result.Error -> handleError(this)
+//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
+//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
+//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
+//        is Result.Error.FileException -> Result.Error.FileException(this.message)
+//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
 
@@ -26,10 +27,11 @@ fun Result.sortedByName(sortOrder: SortResult): Result {
                 SortResult.Desending -> Result.Success(this.munros.sortedByDescending { it.name })
             }
         }
-        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
-        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
-        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
-        is Result.Error.FileException -> Result.Error.FileException(this.message)
-        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
+        is Result.Error -> handleError(this)
+//        is Result.Error.MinimumHeightHigherThenMaximumHeight -> Result.Error.MinimumHeightHigherThenMaximumHeight()
+//        is Result.Error.MinimumHeightIsNegative -> Result.Error.MinimumHeightIsNegative()
+//        is Result.Error.MaximumHeightIsNegative -> Result.Error.MaximumHeightIsNegative()
+//        is Result.Error.FileException -> Result.Error.FileException(this.message)
+//        is Result.Error.NumberOfItemToDisplayCannotBeNegative -> Result.Error.NumberOfItemToDisplayCannotBeNegative()
     }
 }
